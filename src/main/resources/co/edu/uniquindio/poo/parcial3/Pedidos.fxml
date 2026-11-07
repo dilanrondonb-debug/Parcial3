@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Vista de pedidos. Para conectarla agregue fx:controller="su.paquete.PedidoViewController" en la etiqueta VBox -->
+<VBox spacing="20.0" styleClass="vista" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox spacing="20.0">
+         <children>
+            <VBox spacing="12.0" styleClass="tarjeta" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label styleClass="tarjeta-titulo" text="Registrar pedido" />
+                  <GridPane hgap="14.0" vgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                     </columnConstraints>
+                     <children>
+                        <VBox spacing="4.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                           <children>
+                              <Label styleClass="etiqueta" text="Código del pedido" />
+                              <TextField fx:id="txtCodigoPedido" promptText="Ej: P01" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="4.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                           <children>
+                              <Label styleClass="etiqueta" text="Nombre del cliente" />
+                              <TextField fx:id="txtNombreCliente" promptText="Ej: Café La Esquina" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="4.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                           <children>
+                              <Label styleClass="etiqueta" text="Tipo de pan" />
+                              <ComboBox fx:id="cmbTipoPan" maxWidth="Infinity" promptText="Seleccione el tipo">
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                       <String fx:value="TRADICIONAL" />
+                                       <String fx:value="INTEGRAL" />
+                                    </FXCollections>
+                                 </items>
+                              </ComboBox>
+                           </children>
+                        </VBox>
+                        <VBox spacing="4.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Label styleClass="etiqueta" text="Cantidad de unidades" />
+                              <TextField fx:id="txtCantidadUnidades" promptText="Ej: 25" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </GridPane>
+                  <Label fx:id="lblMensajePedido" styleClass="mensaje-neutro" wrapText="true" />
+                  <HBox spacing="10.0">
+                     <children>
+                        <Button fx:id="btnRegistrarPedido" mnemonicParsing="false" styleClass="boton-primario" text="Registrar pedido" />
+                        <Button fx:id="btnLimpiarPedido" mnemonicParsing="false" styleClass="boton-secundario" text="Limpiar" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox minWidth="400.0" prefWidth="400.0" spacing="10.0" styleClass="tarjeta">
+               <children>
+                  <Label styleClass="tarjeta-titulo" text="Asignar o cancelar" />
+                  <Label styleClass="etiqueta" text="Código del pedido" />
+                  <TextField fx:id="txtCodigoGestion" promptText="Elíjalo en la tabla o escríbalo" />
+                  <HBox spacing="10.0">
+                     <children>
+                        <Button fx:id="btnAsignarPedido" mnemonicParsing="false" styleClass="boton-primario" text="Asignar a producción" />
+                        <Button fx:id="btnCancelarPedido" mnemonicParsing="false" styleClass="boton-peligro" text="Cancelar pedido" />
+                     </children>
+                  </HBox>
+                  <VBox spacing="4.0" styleClass="resultado">
+                     <children>
+                        <Label fx:id="lblResultadoOperacion" styleClass="mensaje-neutro" text="Aquí verá el resultado de cada operación." wrapText="true" />
+                        <Label fx:id="lblPanaderoAsignado" styleClass="dato-clave" text="Panadero asignado: sin asignar" />
+                        <Label fx:id="lblMinutosReservados" styleClass="dato-clave" text="Minutos reservados: 0" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <VBox spacing="12.0" styleClass="tarjeta" VBox.vgrow="ALWAYS">
+         <children>
+            <Label styleClass="tarjeta-titulo" text="Historial de pedidos" />
+            <TableView fx:id="tblPedidos" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="colCodigoPedido" prefWidth="90.0" text="Código" />
+                  <TableColumn fx:id="colClientePedido" prefWidth="200.0" text="Cliente" />
+                  <TableColumn fx:id="colTipoPanPedido" prefWidth="120.0" text="Tipo de pan" />
+                  <TableColumn fx:id="colCantidadPedido" prefWidth="90.0" text="Unidades" />
+                  <TableColumn fx:id="colEstadoPedido" prefWidth="120.0" text="Estado" />
+                  <TableColumn fx:id="colEmpleadoPedido" prefWidth="140.0" text="Panadero (código)" />
+                  <TableColumn fx:id="colMinutosPedido" prefWidth="130.0" text="Minutos reservados" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</VBox>

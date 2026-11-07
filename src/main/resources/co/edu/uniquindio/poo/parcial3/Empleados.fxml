@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Vista de empleados. Para conectarla agregue fx:controller="su.paquete.EmpleadoViewController" en la etiqueta HBox -->
+<HBox spacing="20.0" styleClass="vista" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox minWidth="340.0" prefWidth="340.0" spacing="10.0" styleClass="tarjeta">
+         <children>
+            <Label styleClass="tarjeta-titulo" text="Registrar empleado" />
+            <Label styleClass="etiqueta" text="Tipo de empleado" />
+            <ComboBox fx:id="cmbTipoEmpleado" maxWidth="Infinity" promptText="Seleccione el tipo">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Panadero artesanal" />
+                     <String fx:value="Panadero industrial" />
+                     <String fx:value="Cajero" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+            <Label styleClass="etiqueta" text="Documento" />
+            <TextField fx:id="txtDocumentoEmpleado" promptText="Ej: 1094567890" />
+            <Label styleClass="etiqueta" text="Nombre" />
+            <TextField fx:id="txtNombreEmpleado" promptText="Ej: Ana Gómez" />
+            <Label styleClass="etiqueta" text="Código del empleado" />
+            <TextField fx:id="txtCodigoEmpleado" promptText="Ej: E01" />
+            <Label styleClass="etiqueta" text="Minutos disponibles al comienzo del turno" />
+            <TextField fx:id="txtMinutosDisponibles" promptText="Ej: 480" />
+            <Label fx:id="lblCajaAsignada" styleClass="etiqueta" text="Caja asignada (solo para cajeros)" />
+            <TextField fx:id="txtCajaAsignada" promptText="Ej: Caja 1" />
+            <Label fx:id="lblMensajeEmpleado" styleClass="mensaje-neutro" wrapText="true" />
+            <HBox spacing="10.0">
+               <children>
+                  <Button fx:id="btnRegistrarEmpleado" mnemonicParsing="false" styleClass="boton-primario" text="Registrar empleado" />
+                  <Button fx:id="btnLimpiarEmpleado" mnemonicParsing="false" styleClass="boton-secundario" text="Limpiar" />
+               </children>
+            </HBox>
+            <Button fx:id="btnEliminarEmpleado" mnemonicParsing="false" styleClass="boton-peligro" text="Eliminar empleado seleccionado" />
+         </children>
+      </VBox>
+      <VBox spacing="12.0" styleClass="tarjeta" HBox.hgrow="ALWAYS">
+         <children>
+            <Label styleClass="tarjeta-titulo" text="Empleados registrados" />
+            <Label styleClass="etiqueta" text="Se muestran en el orden en que fueron registrados. Ese orden desempata las asignaciones." wrapText="true" />
+            <TableView fx:id="tblEmpleados" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="colTipoEmpleado" prefWidth="140.0" text="Tipo" />
+                  <TableColumn fx:id="colCodigoEmpleado" prefWidth="90.0" text="Código" />
+                  <TableColumn fx:id="colNombreEmpleado" prefWidth="170.0" text="Nombre" />
+                  <TableColumn fx:id="colDocumentoEmpleado" prefWidth="120.0" text="Documento" />
+                  <TableColumn fx:id="colMinutosEmpleado" prefWidth="130.0" text="Minutos disponibles" />
+                  <TableColumn fx:id="colCajaEmpleado" prefWidth="100.0" text="Caja" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</HBox>

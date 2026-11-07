@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Ventana principal. Para conectarla agregue fx:controller="su.paquete.PrincipalViewController" en la etiqueta BorderPane -->
+<BorderPane prefHeight="780.0" prefWidth="1200.0" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <VBox spacing="2.0" styleClass="encabezado">
+         <children>
+            <Label fx:id="lblTituloApp" styleClass="titulo-app" text="Panadería El Trigal" />
+            <Label fx:id="lblSubtituloApp" styleClass="subtitulo-app" text="Registre pedidos, asígnelos a producción y recupere el tiempo de los cancelados" />
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <TabPane fx:id="tabPrincipal" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab fx:id="tabPedidos" text="Pedidos">
+               <content>
+                  <fx:include fx:id="vistaPedidos" source="Pedidos.fxml" />
+               </content>
+            </Tab>
+            <Tab fx:id="tabEmpleados" text="Empleados">
+               <content>
+                  <fx:include fx:id="vistaEmpleados" source="Empleados.fxml" />
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
