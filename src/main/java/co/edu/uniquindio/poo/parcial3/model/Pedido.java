@@ -11,14 +11,12 @@ public class Pedido {
     private EstadoPedido estadoPedido=EstadoPedido.PENDIENTE;
     private TipoPan tipoPan;
 
-    public Pedido(String codigoEmpleadoAsignado,int minutosReservados,
-                  int unidades, TipoPan tipoPan, String nombreCliente, String codigo) {
-        this.codigoEmpleadoAsignado = codigoEmpleadoAsignado;
+    public Pedido(String codigo, String nombreCliente, TipoPan tipoPan, int unidades) {
+
         this.unidades = unidades;
         this.tipoPan = tipoPan;
         this.nombreCliente = nombreCliente;
         this.codigo = codigo;
-        this.minutosReservados = minutosReservados;
 
     }
 
