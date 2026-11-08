@@ -69,7 +69,7 @@ public class Panaderia {
                 IProduccion productor = (IProduccion) e;
                 int necesarios = productor.calcularMinutos(pedido.getTipoPan(), pedido.getUnidades());
                 if (e.getMinutosDisponible() >= necesarios) {
-                    if (mejor == null || necesarios < minutosMinimos) {
+                    if (necesarios < minutosMinimos) {
                         mejor = e;
                         minutosMinimos = necesarios;
                     }

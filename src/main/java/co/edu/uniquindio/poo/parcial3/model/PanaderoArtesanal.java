@@ -1,7 +1,11 @@
 package co.edu.uniquindio.poo.parcial3.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PanaderoArtesanal extends Empleado implements IProduccion {
     private final int PANES_POR_BANDEJA=12;
+    List<Pedido> listaPedidos = new ArrayList<>();
     public PanaderoArtesanal(String documento, String nombre, String codigo, int minutosDisponibles){
         super(documento, nombre, codigo, minutosDisponibles);
     }
