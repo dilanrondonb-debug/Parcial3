@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class Panaderia {
+    
     private String nombre;
     private final List<Empleado> listaEmpleados=new ArrayList<>();
     private final List<Pedido> listaPedidos=new ArrayList<>();
@@ -51,5 +52,10 @@ public class Panaderia {
         Pedido pedido= new Pedido(codigo, nombreCliente, tipoPan, cantidad);
         listaPedidos.add(pedido);
         return pedido;
+    }
+
+
+    private Pedido obtenerPedido(String codigo){
+        return buscarPedido(codigo).orElseThrow(()->new IllegalArgumentException("No existe un pedido con el codigo: "+codigo));
     }
 }
