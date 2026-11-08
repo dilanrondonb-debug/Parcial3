@@ -22,9 +22,7 @@ public class Panaderia {
         listaEmpleados.add(e);
     }
 
-    public void registrarEmpleado(Empleado e) {
-        agregarEmpleado(e);
-    }
+
 
     public Optional<Empleado> buscarEmpleado(String codigo) {
         return listaEmpleados.stream().filter(e -> e.getCodigo().equals(codigo)).findFirst();
@@ -51,6 +49,8 @@ public class Panaderia {
         listaPedidos.add(pedido);
         return pedido;
     }
+
+
 
     public Pedido obtenerPedido(String codigo) {
         return buscarPedido(codigo).orElseThrow(() -> new IllegalArgumentException("No existe un pedido con el codigo: " + codigo));
