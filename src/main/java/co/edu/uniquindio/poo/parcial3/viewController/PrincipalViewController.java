@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.parcial3.viewController;
 
+import co.edu.uniquindio.poo.parcial3.app.App;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -23,7 +24,25 @@ public class PrincipalViewController {
     private Tab tabEmpleados;
 
     @FXML
-    public void initialize() {
+    private PedidoViewController vistaPedidosController;
 
+    @FXML
+    private EmpleadoViewController vistaEmpleadosController;
+
+    @FXML
+    public void initialize() {
+        lblTituloApp.setText(App.empresa.getNombre());
+
+        tabPedidos.setOnSelectionChanged(evento -> {
+            if (tabPedidos.isSelected()) {
+                vistaPedidosController.actualizarTabla();
+            }
+        });
+
+        tabEmpleados.setOnSelectionChanged(evento -> {
+            if (tabEmpleados.isSelected()) {
+                vistaEmpleadosController.actualizarTabla();
+            }
+        });
     }
 }
