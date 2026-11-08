@@ -20,15 +20,17 @@ public class Pedido {
 
     }
 
-    public void asignar(String codigoEmpleado, int minutos) {
-        if(estadoPedido!=EstadoPedido.PENDIENTE) throw new IllegalStateException("Solo se puede asignar un pedido pendiente");
-        this.codigoEmpleadoAsignado=codigoEmpleado;
-        this.minutosReservados=minutos;
-        this.estadoPedido=EstadoPedido.ASIGNADO;
-    }
+
     public void cancelar(){
         if(estadoPedido==EstadoPedido.CANCELADO) throw new IllegalStateException("El pedido ya está cancelado");
         this.estadoPedido=EstadoPedido.CANCELADO;
+    }
+
+    public void asignar(String codigoEmpleado, int minutos){
+        if(estadoPedido != EstadoPedido.PENDIENTE) throw new IllegalStateException("Solo se puede asignar un pedido pendiente");
+        this.codigoEmpleadoAsignado = codigoEmpleado;
+        this.minutosReservados = minutos;
+        this.estadoPedido = EstadoPedido.ASIGNADO;
     }
 
     //Getters & Setters
@@ -66,6 +68,22 @@ public class Pedido {
 
     public String getCodigoEmpleadoAsignado() {
         return codigoEmpleadoAsignado;
+    }
+
+    public EstadoPedido getEstadoPedido() {
+        return estadoPedido;
+    }
+
+    public void setEstadoPedido(EstadoPedido estadoPedido) {
+        this.estadoPedido = estadoPedido;
+    }
+
+    public TipoPan getTipoPan() {
+        return tipoPan;
+    }
+
+    public void setTipoPan(TipoPan tipoPan) {
+        this.tipoPan = tipoPan;
     }
 
     public void setCodigoEmpleadoAsignado(String codigoEmpleadoAsignado) {

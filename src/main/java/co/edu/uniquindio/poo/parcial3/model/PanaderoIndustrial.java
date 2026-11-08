@@ -1,6 +1,6 @@
 package co.edu.uniquindio.poo.parcial3.model;
 
-public class PanaderoIndustrial extends Panadero implements IProduccion {
+public class PanaderoIndustrial extends Empleado implements IProduccion {
  private static final int PANES_POR_LOTE=30;
  private static final int MINUTOS_PREPARACION=20;
  public PanaderoIndustrial(String documento, String nombre, String codigo, int minutosDisponibles){
