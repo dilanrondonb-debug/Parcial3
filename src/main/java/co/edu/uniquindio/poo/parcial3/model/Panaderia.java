@@ -35,7 +35,7 @@ public class Panaderia {
 
     // CRUD Pedido
     public Optional<Pedido> buscarPedido(String codigo) {
-        return listaPedidos.stream().filter(e -> e.getCodigo().equals(codigo)).findFirst();
+        return listaPedidos.stream().filter(p -> p.getCodigo().equals(codigo)).findFirst();
     }
 
     public Pedido registrarPedido(String codigo, String nombreCliente, TipoPan tipoPan, int cantidad) {
