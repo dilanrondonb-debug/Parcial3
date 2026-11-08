@@ -1,12 +1,11 @@
 package co.edu.uniquindio.poo.parcial3.model;
 
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +16,7 @@ class PanaderiaTest {
 
 
     @Test
-    void registrarPedido() {
+    void registrarPedido1() {
 
         List<Integer> minutosAntes = panaderia.getListaEmpleados().stream().map(Empleado::getMinutosDisponible).toList();
 
@@ -31,6 +30,17 @@ class PanaderiaTest {
 
         assertEquals(minutosAntes,minutosDespues);
 
+    }
+
+    @Test
+    void registrarPedido2() {
+        Pedido pedido = panaderia.registrarPedido("P01", "", TipoPan.TRADICIONAL, 25);
+        pedido.cancelar();
+
+
+
+        assertThrows(IllegalArgumentException.class, () -> panaderia.registrarPedido("P01", "", TipoPan.TRADICIONAL, 25));
+        assertEquals(EstadoPedido.CANCELADO, pedido.getEstadoPedido());
     }
 
     @Test
